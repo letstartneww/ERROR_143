@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 143 - Not Interested</title>
+    
+    <!-- Google Font for Typing Effect -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            overflow: hidden;
+            animation: glitch-bg 1s infinite alternate;
+        }
+        
+        h1 {
+            font-size: 50px;
+            animation: glitch 0.5s infinite alternate;
+        }
+        
+        p {
+            font-size: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid white;
+            width: 0;
+            animation: typing 3s steps(30, end) forwards;
+        }
+        
+        /* Glitch Effect */
+        @keyframes glitch {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-3px); text-shadow: -2px 0 red, 2px 0 blue; }
+            50% { transform: translateX(3px); text-shadow: 2px 0 red, -2px 0 blue; }
+            75% { transform: translateX(-3px); text-shadow: -2px 0 blue, 2px 0 red; }
+            100% { transform: translateX(0); }
+        }
+        
+        /* Typing Effect */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        /* Glitchy Background */
+        @keyframes glitch-bg {
+            0% { background-color: black; }
+            100% { background-color: #111; }
+        }
+        
+        /* Button Effect */
+        .disappear-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background: red;
+            color: white;
+            cursor: pointer;
+            animation: glitch 0.5s infinite alternate;
+        }
+        .disappear-button:hover {
+            animation: none;
+        }
+        .disappear-button:active {
+            display: none;
+        }
+        
+        /* Falling Broken Hearts */
+        .heart {
+            position: absolute;
+            color: #8B0000;
+            font-size: 28px;
+            opacity: 0.9;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+        }
+        
+        /* Shattered Screen Effect */
+        .shattered {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://www.transparenttextures.com/patterns/cracks.png');
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Error 143</h1>
+    <p id="typing-text">Not Interested in Dating.</p>
+    <button class="disappear-button">Try Again?</button>
+    
+    <div class="shattered"></div>
+
+    <!-- Sad Background Music -->
+    <audio autoplay loop>
+        <source src="https://www.myinstants.com/media/sounds/sad-violin.mp3" type="audio/mp3">
+    </audio>
+    
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💔";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
